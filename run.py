@@ -3,7 +3,7 @@
 import sys
 import json
 from curtsies import Input
-from playsound import playsound
+from pygame import mixer
 
 
 def load_json():
@@ -12,15 +12,19 @@ def load_json():
 
 
 def speech(key):
-    playsound(f'./voice_files/{key}.mp3')
+    mixer.init()
+    mixer.music.load(f'./voice_files/{key}.mp3')
+    mixer.music.play()
 
 
 def keyAction(key, json):
     key = key.replace("'", '')
-    print(key, ":")
 
     if key == " ":
         key = "SPACE"
+
+    # Current key
+    print(key, ":")
 
     if key in json:
         print(json[key], "\n")

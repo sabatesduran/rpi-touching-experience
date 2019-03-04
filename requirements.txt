@@ -1,1 +1,3 @@
 google-cloud-texttospeech==0.4.0
+curtsies==0.3.0
+playsound==1.2.2

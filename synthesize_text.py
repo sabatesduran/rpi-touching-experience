@@ -11,11 +11,11 @@ def load_json():
 
 # This functions is from a Google API example
 # https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/texttospeech/cloud-client/synthesize_text.py
-def synthesize_text(text):
+def synthesize_text(k, v):
     """Synthesizes speech from the input string of text."""
     client = texttospeech.TextToSpeechClient()
 
-    input_text = texttospeech.types.SynthesisInput(text=item["text"])
+    input_text = texttospeech.types.SynthesisInput(text=v)
 
     # Note: the voice can also be specified by name.
     # Names of voices can be retrieved with client.list_voices().
@@ -29,7 +29,7 @@ def synthesize_text(text):
     response = client.synthesize_speech(input_text, voice, audio_config)
 
     # The response's audio_content is binary.
-    file_name = f'./voice_files/{item["key"]}.mp3'
+    file_name = f'./voice_files/{k}.mp3'
     with open(file_name, 'wb') as out:
         out.write(response.audio_content)
         print(f'Audio content written to file {file_name}\n')
@@ -38,7 +38,7 @@ def synthesize_text(text):
 if __name__ == '__main__':
     json = load_json()
     print("========= GENERATING MP3 FILES =========")
-    for item in json["data"]:
-        print(f'{item["key"]}: {item["text"]}')
-        synthesize_text(item)
+    for k, v in json.items():
+        print(f'{k}: {v}')
+        synthesize_text(k, v)
     print("========= FINISHED =========")

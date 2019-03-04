@@ -1,0 +1,27 @@
+{
+  "data": [{
+      "key": "q",
+      "text": "Quiting program"
+    },
+    {
+      "key": "SPACE",
+      "text": "Ouch! That hurts!"
+    },
+    {
+      "key": "KEY_UP",
+      "text": "This is Thyme"
+    },
+    {
+      "key": "KEY_RIGHT",
+      "text": "This is Rosemary"
+    },
+    {
+      "key": "KEY_DOWN",
+      "text": "This is Choco Mint"
+    },
+    {
+      "key": "KEY_LEFT",
+      "text": "This are Edible violets"
+    }
+  ]
+}

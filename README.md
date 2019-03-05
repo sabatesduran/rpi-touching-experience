@@ -18,21 +18,39 @@ We use the Google Cloud [Text-to-Speech API](https://cloud.google.com/text-to-sp
 
 ## Install
 
-- Create credentials for the Google Text-to-Speech API [here](https://cloud.google.com/text-to-speech/docs/quickstart-client-libraries) (You will need to add a billing account).
+In this example I'm using a Raspberry Pi Zero W V1.1 with Raspbian Stretch Lite.
 
-- Add variable to `.bashrc`
+- Install packages
+
+```sh
+sudo apt install git build-essential checkinstall python-pip python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev python-numpy subversion libportmidi-dev ffmpeg libswscale-dev libavfor  mat-dev libavcodec-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+```
+
+or (havent't try this one yet)
+
+```sh
+sudo apt-get install python-pygame
+```
+
+- Install Python 3.6 with the following [gist](https://gist.github.com/dschep/24aa61672a2092246eaca2824400d37f).
+
+  - If you can't install pip3.6 packages check this StackOverflow [answer](https://stackoverflow.com/a/44291036/3437023).
+
+* Create credentials for the Google Text-to-Speech API [here](https://cloud.google.com/text-to-speech/docs/quickstart-client-libraries) (You will need to add a billing account).
+
+* Add variable to `.bashrc`
 
 ```sh
 echo "export GOOGLE_APPLICATION_CREDENTIALS=\"/home/pi/rpi-touching-experience/credentials.json\"" >> ~/.bashrc
 ```
 
-- Install dependencies
+- Install dependencies (grab popcorn and open Netflix this is going to take a while)
 
 ```sh
-pip3 install -r requirements.txt
+pip3.6 install -r requirements.txt --user
 ```
 
-- Generate audio
+- Generate audio (very slow from the Raspberry)
 
 ```sh
 python3 synthesize_text.py

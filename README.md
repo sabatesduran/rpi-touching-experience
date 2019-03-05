@@ -23,7 +23,7 @@ In this example I'm using a Raspberry Pi Zero W V1.1 with Raspbian Stretch Lite.
 - Install packages
 
 ```sh
-sudo apt install git build-essential checkinstall python-pip python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev python-numpy subversion libportmidi-dev ffmpeg libswscale-dev libavfor  mat-dev libavcodec-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+sudo apt install git mgp123 build-essential checkinstall python-pip python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev python-numpy subversion libportmidi-dev ffmpeg libswscale-dev libavfor  mat-dev libavcodec-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
 ```
 
 or (havent't try this one yet)
@@ -41,7 +41,7 @@ sudo apt-get install python-pygame
 * Add variable to `.bashrc`
 
 ```sh
-echo "export GOOGLE_APPLICATION_CREDENTIALS=\"/home/pi/rpi-touching-experience/credentials.json\"" >> ~/.bashrc
+echo "export GOOGLE_APPLICATION_CREDENTIALS=\"/home/pi/rpi-touching-experience/credentials.json\"" >> ~/.bashrc && souce ~/.bashrc
 ```
 
 - Install dependencies (grab popcorn and open Netflix this is going to take a while)
@@ -50,11 +50,13 @@ echo "export GOOGLE_APPLICATION_CREDENTIALS=\"/home/pi/rpi-touching-experience/c
 pip3.6 install -r requirements.txt --user
 ```
 
-- Generate audio (very slow from the Raspberry)
+- Generate audio (check that you have Internet if you see that it's hanging in there)
 
 ```sh
 python3 synthesize_text.py
 ```
+
+- Install the USB audio card following this [tutorial](https://learn.adafruit.com/usb-audio-cards-with-a-raspberry-pi/updating-alsa-config).
 
 - Execute program
 

@@ -1,12 +1,7 @@
 #!/usr/bin/env python
 
-import json
 from google.cloud import texttospeech
-
-
-def load_json():
-    with open("text_by_key.json", "r") as read_file:
-        return json.load(read_file)
+from functions import load_json
 
 
 # This functions is from a Google API example
@@ -28,7 +23,7 @@ def synthesize_text(k, v):
 
     response = client.synthesize_speech(input_text, voice, audio_config)
 
-    # The response's audio_content is binary.
+    # The response's audio_content is binaryso we save it in a file.
     file_name = f'./voice_files/{k}.mp3'
     with open(file_name, 'wb') as out:
         out.write(response.audio_content)
@@ -36,7 +31,7 @@ def synthesize_text(k, v):
 
 
 if __name__ == '__main__':
-    json = load_json()
+    json = load_json("text_by_key.json")
     print("========= GENERATING MP3 FILES =========")
     for k, v in json.items():
         print(f'{k}: {v}')

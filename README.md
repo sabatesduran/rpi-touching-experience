@@ -28,7 +28,7 @@ In this example I'm using a Raspberry Pi Zero W V1.1 with Raspbian Stretch Lite.
 - Install packages
 
 ```sh
-sudo apt install git mgp123 build-essential checkinstall python-pip python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev python-numpy subversion libportmidi-dev ffmpeg libswscale-dev libavfor  mat-dev libavcodec-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+sudo apt install git mgp123 build-essential checkinstall python-pip python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev python-numpy subversion libportmidi-dev ffmpeg libswscale-dev libavfor  mat-dev libavcodec-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libudev-dev
 ```
 
 or (havent't try this one yet)

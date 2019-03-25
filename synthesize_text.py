@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os
 from google.cloud import texttospeech
 from functions import load_json
 
@@ -7,7 +8,7 @@ from functions import load_json
 # This functions is from a Google API example
 # https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/texttospeech/cloud-client/synthesize_text.py
 def synthesize_text(k, v):
-    """Synthesizes speech from the input string of text."""
+    # Synthesizes speech from the input string of text.
     client = texttospeech.TextToSpeechClient()
 
     input_text = texttospeech.types.SynthesisInput(text=v)
@@ -31,9 +32,18 @@ def synthesize_text(k, v):
 
 
 if __name__ == '__main__':
-    json = load_json("text_by_key.json")
-    print("========= GENERATING MP3 FILES =========")
+    json = load_json("text_by_pin.json")
+    print("========= DELETING OLD FILES =========")
+    # Gets all the files from a directory as an array
+    for filename in os.listdir("./voice_files"):
+        # If the file ends with .mp3 we detete it
+        if filename.endswith('.mp3'):
+            os.unlink(f'./voice_files/{filename}')
+            print(f'\t Deleting {filename}')
+
+    print("\n========= GENERATING NEW MP3 FILES =========")
     for k, v in json.items():
-        print(f'{k}: {v}')
-        synthesize_text(k, v)
-    print("========= FINISHED =========")
+        if v != "":
+            print(f'{k}: {v}')
+            synthesize_text(k, v)
+    print("========= DONE =========")

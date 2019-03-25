@@ -1,27 +1,35 @@
 #!/usr/bin/env python
 
+import os
 import sys
-from curtsies import Input
+import time
+import board
+import busio
+import adafruit_mpr121
 from pygame import mixer
 from functions import load_json
 
 
 def speech(key):
-    # Users pygame mixer to load an mp3 file and play it
+    # Start pygame mixer
     mixer.init()
-    mixer.music.load(f'./voice_files/{key}.mp3')
+
+    # Users pygame mixer to load an mp3 file and play it
+    filename = f'./voice_files/{key}.mp3'
+    not_found_filename = './voice_files/not_found.mp3'
+
+    # Check if file exists
+    exists = os.path.isfile(filename)
+
+    if exists:
+        mixer.music.load(filename)
+    else:
+        mixer.music.load(not_found_filename)
+
     mixer.music.play()
 
 
 def keyAction(key, json):
-    # The detect key function return the caracter
-    # with single quotes here we are removing them
-    key = key.replace("'", '')
-
-    # In case that detects an space we chnage the key to SPACE
-    if key == " ":
-        key = "SPACE"
-
     # Print pressed key
     print(key, ":")
 
@@ -29,24 +37,29 @@ def keyAction(key, json):
     if key in json:
         print(json[key], "\n")
         speech(key)
-    elif key == "q":
-        # Quit the program if the key is a "q"
-        print("Exiting program...See ya!")
-        sys.exit()
     else:
         # Print an error if we don't know what to do with the key.
         print("I don't know this mapping\n")
 
 
-def detectKey(json):
+def detectPin(json):
     print("========= WAITING FOR KEYS =========")
-    with Input(keynames='curses') as input_generator:
-        for e in input_generator:
-            keyAction(repr(e), json)
+    i2c = busio.I2C(board.SCL, board.SDA)
+    mpr121 = adafruit_mpr121.MPR121(i2c)
+
+    while True:
+        # Loop through all 12 inputs (0-11).
+        for i in range(12):
+            # Call is_touched and pass it then number of the input.  If it's touched
+            # it will return True, otherwise it will return False.
+            if mpr121[i].value:
+                print('Input {} touched!'.format(i))
+                speech(i)
+        time.sleep(0.25)  # Small delay to keep from spamming output messages.
 
 
 if __name__ == '__main__':
     # Get JSON object
-    json = load_json("text_by_key.json")
+    json = load_json("text_by_pin.json")
     # Start detecting keys
-    detectKey(json)
+    detectPin(json)

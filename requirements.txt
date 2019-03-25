@@ -1,5 +1,4 @@
 google-cloud-texttospeech==0.4.0
 curtsies==0.3.0
 pygame==1.9.4
-python-uinput==0.11.2
 adafruit-circuitpython-mpr121==2.0.1

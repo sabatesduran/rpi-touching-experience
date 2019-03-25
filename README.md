@@ -2,7 +2,8 @@
 
 ### TODO
 
-- [ ] Add MPR121 Capacitive Touch Sensor
+- [x] Add MPR121 Capacitive Touch Sensor
+- [x] Add MPR121 to the code
 
 ### Hardware
 
@@ -28,7 +29,7 @@ In this example I'm using a Raspberry Pi Zero W V1.1 with Raspbian Stretch Lite.
 - Install packages
 
 ```sh
-sudo apt install git mgp123 build-essential checkinstall python-pip python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev python-numpy subversion libportmidi-dev ffmpeg libswscale-dev libavfor  mat-dev libavcodec-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libudev-dev
+sudo apt install git mgp123 build-essential checkinstall python-pip python-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev python-numpy subversion libportmidi-dev ffmpeg libswscale-dev libavfor  mat-dev libavcodec-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libudev-dev python-smbus i2c-tools
 ```
 
 or (havent't try this one yet)
@@ -36,6 +37,13 @@ or (havent't try this one yet)
 ```sh
 sudo apt-get install python-pygame
 ```
+
+- Enable i2c (Nedeed to work with MPR121)
+
+  1. `$ sudo raspi-config`
+  2. Interfacing Options
+  3. I2C
+  4. Select `Yes`
 
 - Install Python 3.6 with the following [gist](https://gist.github.com/dschep/24aa61672a2092246eaca2824400d37f).
 

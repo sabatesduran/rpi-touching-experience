@@ -55,7 +55,7 @@ def detectPin(json):
             if mpr121[i].value:
                 print('Input {} touched!'.format(i))
                 speech(i)
-        time.sleep(0.25)  # Small delay to keep from spamming output messages.
+        time.sleep(0.5)  # Small delay to keep from spamming output messages.
 
 
 if __name__ == '__main__':

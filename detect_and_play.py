@@ -7,16 +7,16 @@ import board
 import busio
 import adafruit_mpr121
 from pygame import mixer
-from functions import load_json
+from lib.functions import load_json
 
 
-def speech(key):
+def speech(pin):
     # Start pygame mixer
     mixer.init()
 
     # Users pygame mixer to load an mp3 file and play it
-    filename = f'./voice_files/{key}.mp3'
-    not_found_filename = './voice_files/not_found.mp3'
+    filename = f'../voice_files/{pin}.mp3'
+    not_found_filename = '../voice_files/not_found.mp3'
 
     # Check if file exists
     exists = os.path.isfile(filename)
@@ -29,20 +29,7 @@ def speech(key):
     mixer.music.play()
 
 
-def keyAction(key, json):
-    # Print pressed key
-    print(key, ":")
-
-    # In case the key exists in the object we play the audio file
-    if key in json:
-        print(json[key], "\n")
-        speech(key)
-    else:
-        # Print an error if we don't know what to do with the key.
-        print("I don't know this mapping\n")
-
-
-def detectPin(json):
+def detectPin():
     print("========= WAITING FOR KEYS =========")
     i2c = busio.I2C(board.SCL, board.SDA)
     mpr121 = adafruit_mpr121.MPR121(i2c)
@@ -53,13 +40,11 @@ def detectPin(json):
             # Call is_touched and pass it then number of the input.  If it's touched
             # it will return True, otherwise it will return False.
             if mpr121[i].value:
-                print('Input {} touched!'.format(i))
+                print(f'Input detected PIN {i} touched!')
                 speech(i)
-        time.sleep(0.5)  # Small delay to keep from spamming output messages.
+        time.sleep(0.25)  # Small delay to keep from spamming output messages.
 
 
 if __name__ == '__main__':
-    # Get JSON object
-    json = load_json("text_by_pin.json")
-    # Start detecting keys
-    detectPin(json)
+    # Start detecting pins
+    detectPin()

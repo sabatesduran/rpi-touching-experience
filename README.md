@@ -1,10 +1,5 @@
 # Touching experience with a Raspberry Pi
 
-### TODO
-
-- [x] Add MPR121 Capacitive Touch Sensor
-- [x] Add MPR121 to the code
-
 ### Hardware
 
 - Raspberry Pi (2, 3, Zero or Zero W)

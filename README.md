@@ -1,5 +1,11 @@
 # Touching experience with a Raspberry Pi
 
+## TODO
+
+- [ ] Add loader in website when updating audio files
+- [ ] Add alert when not connected to the internet
+- [ ] Fix MPR121 connection
+
 ### Hardware
 
 - Raspberry Pi (2, 3, Zero or Zero W)

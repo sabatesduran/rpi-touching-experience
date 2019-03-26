@@ -25,7 +25,12 @@ const getPinsDOM = () => {
 };
 
 const updatePins = async () => {
+  let spinner = document.getElementById("spinner");
   let pins = getPinsDOM();
+
+  // Enable spinner
+  spinner.style.display = "flex";
+
   return fetch("/updatePins", {
     method: "POST",
     mode: "cors",
@@ -35,7 +40,10 @@ const updatePins = async () => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(pins)
-  }).then(response => response.json());
+  }).then(response => {
+    spinner.style.display = "none";
+    return response.json();
+  });
 };
 
 const createInputField = (pinNumber, text) => {

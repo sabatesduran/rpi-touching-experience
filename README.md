@@ -2,9 +2,8 @@
 
 ## TODO
 
-- [ ] Add loader in website when updating audio files
-- [ ] Add alert when not connected to the internet
-- [ ] Fix MPR121 connection
+- [ ] Add alert when not connected to the internet or an error from the fetch call
+- [ ] Fix MPR121 sensitivity
 
 ### Hardware
 

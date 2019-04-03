@@ -10,7 +10,10 @@ from lib.player import play
 
 
 def detectPin():
-    print("========= WAITING FOR KEYS =========")
+    print("============================================")
+    print("========= HRBS TOUCHING EXPERIENCE =========")
+    print("============================================")
+    print("\nWAITING FOR TOUCH EVENTS...")
     i2c = busio.I2C(board.SCL, board.SDA)
 
     # Set sensor sensitivity

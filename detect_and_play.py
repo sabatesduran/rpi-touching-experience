@@ -13,7 +13,11 @@ def detectPin():
     print("============================================")
     print("========= HRBS TOUCHING EXPERIENCE =========")
     print("============================================")
-    print("\nWAITING FOR TOUCH EVENTS...")
+    print("\nWAITING FOR TOUCH EVENTS...\n")
+
+    # Count amount of touch events happening
+    touch_count = 0
+
     i2c = busio.I2C(board.SCL, board.SDA)
 
     # Set sensor sensitivity
@@ -28,7 +32,8 @@ def detectPin():
             # Call is_touched and pass it then number of the input.  If it's touched
             # it will return True, otherwise it will return False.
             if mpr121[i].value:
-                print(f'Input detected PIN {i} touched!')
+                touch_count += 1
+                print(f'{touch_count}: PIN {i} touched!')
                 play(i)
         time.sleep(0.25)  # Small delay to keep from spamming output messages.
 

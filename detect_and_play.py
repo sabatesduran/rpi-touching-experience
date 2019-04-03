@@ -12,6 +12,8 @@ from lib.player import play
 def detectPin():
     print("========= WAITING FOR KEYS =========")
     i2c = busio.I2C(board.SCL, board.SDA)
+    adafruit_mpr121.MPR121_TOUCHTH_0 = 10
+    adafruit_mpr121.MPR121_RELEASETH_0 = 10
     mpr121 = adafruit_mpr121.MPR121(i2c)
 
     while True:

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href='/static/style.css' />
+  <link rel="icon" href="/static/favicon.ico">
+  <title>Touch experience</title>
+</head>
+
+<body>
+  <div id="spinner" class="spinner-container">
+    <div class="spinner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+    Updating audio files...
+  </div>
+  <div id="root">
+    <header>
+      <img src="/static/logo.png" alt="Hrbs logo">
+      <h1>Touch experience</h1>
+    </header>
+    <div class="d-flex align-items-center justify-space-between">
+      <h3 class="m-0">PINS</h3>
+      <button id="save" class="btn">Save</button>
+    </div>
+    <div id="pins-container"></div>
+  </div>
+</body>
+
+<script src="/static/update-pins.js"></script>
+
+</html>

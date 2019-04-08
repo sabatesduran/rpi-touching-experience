@@ -31,7 +31,7 @@ const updatePins = async () => {
   // Enable spinner
   spinner.style.display = "flex";
 
-  return fetch("/updatePins", {
+  return fetch("/update-pins", {
     method: "POST",
     mode: "cors",
     cache: "no-cache",

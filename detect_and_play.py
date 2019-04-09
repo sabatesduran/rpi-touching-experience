@@ -8,20 +8,20 @@ import adafruit_mpr121
 from lib.functions import load_json
 from lib.player import play
 
+# GLOBAL VARIABLES
+PINS = 12
+AVERAGE_TIMES = 40
 
 def calculate_average(pins):
-    for i in range(12):
+    for i in range(PINS):
         pins[i] = sum(pins[i]) / len(pins[i])
     return pins
 
 
 def run():
     print("============================================")
-    print("========= HRBS TOUCHING EXPERIENCE =========")
+    print("========= RPI TOUCHING EXPERIENCE ==========")
     print("============================================")
-
-    # GLOBAL VARIABLES
-    AVERAGE_TIMES = 40
 
     # Count amount of touch events happening
     touch_count = 0
@@ -36,14 +36,14 @@ def run():
     mpr121 = adafruit_mpr121.MPR121(i2c)
 
     average_per_pin = False
-    total_per_pin = [[], [], [], [], [], [], [], [], [], [], [], []]
+    total_per_pin = [[] for i in range(PINS)]
 
     while True:
         # Loop through all 12 inputs (0-11).
-        for i in range(12):
+        for i in range(PINS):
             if average_loop_count <= AVERAGE_TIMES:
                 total_per_pin[i].append(mpr121[i].raw_value)
-                if average_loop_count == AVERAGE_TIMES and i == 11 and not average_per_pin:
+                if average_loop_count == AVERAGE_TIMES and i == (PINS - 1) and not average_per_pin:
                     average_per_pin = calculate_average(total_per_pin)
                     print("AVERAGE PER PIN", average_per_pin)
                     print("\nWAITING FOR TOUCH EVENTS...\n")

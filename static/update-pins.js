@@ -13,7 +13,7 @@ window.addEventListener("load", async e => {
 });
 
 const getPinsJson = async () => {
-  return fetch("/static/text_by_pin.json").then(response => response.json());
+  return fetch("/static/text_by_key.json").then(response => response.json());
 };
 
 const getPinsDOM = () => {

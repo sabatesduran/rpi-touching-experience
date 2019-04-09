@@ -8,6 +8,12 @@ def load_json(file_path):
         return json.load(read_file)
 
 
+def rewrite_json(file_path, new_json):
+    with open(file_path, "w") as file:
+        file.write(json.dumps(new_json, indent=4, sort_keys=True))
+        file.close()
+
+
 def delete_mp3_from_folder(folder):
     # Gets all the files from a directory as an array
     for filename in os.listdir(folder):

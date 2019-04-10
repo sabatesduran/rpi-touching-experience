@@ -13,6 +13,7 @@ def load_json():
 def key_press(key):
     print("Key pressed: ", key.name)
     keyAction(key.name)
+#     keyboard.wait('esc')
 
 
 def keyAction(key):
@@ -25,9 +26,11 @@ def keyAction(key):
     else:
         print("I don't know this mapping\n")
 
+#     keyboard.write('esc')
+
 
 def detectKey():
-    keyboard.on_press(key_press)
+    keyboard.on_release(key_press)
     print("========= WAITING FOR KEYS =========")
     while True:
         time.sleep(0.8)

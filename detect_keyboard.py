@@ -30,7 +30,7 @@ def detectKey():
     keyboard.on_press(key_press)
     print("========= WAITING FOR KEYS =========")
     while True:
-        time.sleep(0.25)
+        time.sleep(0.8)
 
 
 if __name__ == '__main__':

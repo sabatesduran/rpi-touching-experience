@@ -11,12 +11,11 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-curtsies = {version = "==0.3.0", index = "piwheels"}
-adafruit-circuitpython-mpr121 = {version = "==2.0.1", index = "piwheels"}
-google-cloud-texttospeech = {version = "==0.4.0", index = "piwheels"}
-pygame = {version = "==1.9.4", index = "piwheels"}
-Flask = {version = "==1.0.2", index = "piwheels"}
-flask-socketio = {version = "*", index = "piwheels"}
+curtsies = {index = "piwheels",version = "==0.3.0"}
+adafruit-circuitpython-mpr121 = {index = "piwheels",version = "==2.0.1"}
+google-cloud-texttospeech = {index = "piwheels",version = "==0.4.0"}
+pygame = {index = "piwheels",version = "==1.9.4"}
+Flask = {index = "piwheels",version = "==1.0.2"}
 
 [requires]
 python_version = "3.6.5"

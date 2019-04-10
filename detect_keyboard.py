@@ -11,12 +11,12 @@ def load_json():
 
 def keyAction(key, json):
     key = key.replace("'", '')
-
+    print(key, ": ")
     if key == " ":
         key = "SPACE"
 
     if key in json:
-        print(key, "\n")
+        print(json[key], "\n")
         play(key)
     elif key == "q":
         print("See ya!")

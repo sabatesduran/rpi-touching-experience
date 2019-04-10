@@ -10,11 +10,6 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/herbs')
-def herbs():
-    return render_template('herbs.html')
-
-
 @app.route('/pin-voices')
 def pinVoices():
     return render_template('pin-voices.html')

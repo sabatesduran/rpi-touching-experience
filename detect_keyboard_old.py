@@ -1,7 +1,6 @@
 import sys
-import time
 import json
-import keyboard
+from curtsies import Input
 from lib.player import play
 
 
@@ -10,14 +9,14 @@ def load_json():
         return json.load(read_file)
 
 
-def key_press(key):
-    print("Key pressed: ", key.name)
-    keyAction(key.name)
+def keyAction(key, json):
+    key = key.replace("'", '')
+    print(key, ": ")
+    if key == " ":
+        key = "SPACE"
 
-
-def keyAction(key):
-    if key in JSON_DOC:
-        print(JSON_DOC[key], "\n")
+    if key in json:
+        print(json[key], "\n")
         play(key)
     elif key == "q":
         print("See ya!")
@@ -26,13 +25,13 @@ def keyAction(key):
         print("I don't know this mapping\n")
 
 
-def detectKey():
-    keyboard.on_press(key_press)
+def detectKey(json):
     print("========= WAITING FOR KEYS =========")
-    while True:
-        time.sleep(0.25)
+    with Input(keynames='curses') as input_generator:
+        for e in input_generator:
+            keyAction(repr(e), json)
 
 
 if __name__ == '__main__':
-    JSON_DOC = load_json()
-    detectKey()
+    json = load_json()
+    detectKey(json)

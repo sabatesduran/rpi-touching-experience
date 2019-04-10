@@ -1,8 +1,8 @@
 {
-    "KEY_DOWN": "This is Thyme",
-    "KEY_LEFT": "This is Rosemary",
-    "KEY_RIGHT": "This is an herbs tray wich you can use to make your tea.",
-    "KEY_UP": "Ouch! That hurts",
-    "SPACE": "This is Choco Mint",
-    "not_found": "Audio not found!"
+    "down": "This is Thyme",
+    "left": "This is Rosemary",
+    "not_found": "Audio not found!",
+    "right": "This is an herbs tray wich you can use to make your tea.",
+    "space": "This is Choco Mint",
+    "up": "Ouch! That hurts"
 }

@@ -4,12 +4,10 @@ from pygame import mixer
 
 
 def play(pin):
-    # Start pygame mixer
+    # Start pygame mixer if it's not running
     if not mixer.get_init():
-        print("Starting mixer")
         mixer.init()
     else:
-        print("Mixer alredy enabled")
 
     if not mixer.music.get_busy() == True:
         # Users pygame mixer to load an mp3 file and play it
@@ -21,16 +19,11 @@ def play(pin):
         if exists:
             mixer.music.load(filename)
         else:
+            # We load the not found file if the file doesn't exist
             mixer.music.load('./voice_files/not_found.mp3')
 
+        # Play the audio file
         mixer.music.play()
-
-        # Checks if it's busy playing the sound
-        # while mixer.music.get_busy() == True:
-        # continue
-
-        # Close mixer
-        # mixer.quit()
 
 
 if __name__ == '__main__':

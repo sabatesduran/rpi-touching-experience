@@ -16,6 +16,7 @@ adafruit-circuitpython-mpr121 = {index = "piwheels",version = "==2.0.1"}
 google-cloud-texttospeech = {index = "piwheels",version = "==0.4.0"}
 pygame = {index = "piwheels",version = "==1.9.4"}
 Flask = {index = "piwheels",version = "==1.0.2"}
+keyboard = {index = "piwheels",version = "*"}
 
 [requires]
 python_version = "3.6.5"
